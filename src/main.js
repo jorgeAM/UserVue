@@ -1,4 +1,6 @@
 import Vue from 'vue'
+//para hacer peticiones AJAX
+import axios from 'axios';
 //router
 import VueRouter from 'vue-router'
 //componentes
@@ -9,6 +11,8 @@ import Contacto from './Contacto.vue'
 
 //para que use VueRouter
 Vue.use(VueRouter);
+//para que use axios
+Vue.use(axios);
 
 //rutas
 const routes = [
