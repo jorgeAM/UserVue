@@ -1,15 +1,15 @@
 <template>
 	<div>
-		<div v-if="usuarios != null">
-			<h2>{{texto}}</h2>
-				<li v-for="usuario in usuarios">
-					{{ usuario.name }}
-				</li>
-		</div>
-		<div v-if="usuarios == null">
-			<h2>NO HAY DATOS</h2>
-			<p>{{usuarios}}</p>
-		</div>
+		<ul id="usuarios-list" v-if="usuarios != null">
+			<li v-for="usuario in usuarios">
+				<strong>{{usuario.name}}</strong>
+				<p>
+					<router-link class="btn btn-success" :to="{name: 'usuario', params: { id: usuario.id }}">Ver</router-link>
+					<router-link class="btn btn-warning" :to="{name: 'editar-usuario', params: { id: usuario.id }}">Editar</router-link>
+				</p>
+			</li>
+		</ul>
+		<span v-else>Cargando Usuarios...</span>
 	</div>
 </template>
 
@@ -18,9 +18,8 @@ import axios from 'axios';
 
 	export default {
 		name:'users-list',
-		mountend(){
+		mounted(){
 			this.getUsuarios();
-			console.log(this.usuarios);
 		},
 		data() {
 			return {
@@ -32,9 +31,7 @@ import axios from 'axios';
 			getUsuarios(){
 				axios.get('http://localhost:8000/api/usuarios')
 				.then(res => {
-					console.log('ajax')
-					console.log(res.usuarios)
-					this.usuarios = res.data.usuarios	;
+					this.usuarios = res.data.usuarios;
 				})
 				.catch(err => {
 					console.log(err)
@@ -43,3 +40,18 @@ import axios from 'axios';
 		}
 	}
 </script>
+
+<style lang="scss">
+	#usuarios-list{
+		padding: 5px;
+		li{
+			margin-top: 10px;
+			width: 30%;
+			height: 120px;
+			border: 1px solid #ddd;
+			background: #eee;
+			padding: 20px;
+			overflow: hidden;
+		}
+	}
+</style>
