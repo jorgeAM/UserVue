@@ -5,6 +5,7 @@
     <ul>
       <li><router-link to="home">Home</router-link></li>
       <li><router-link to="usuarios-lista">Lista usuarios</router-link></li>
+      <li><router-link to="crear-usuario">Crear Usuario</router-link></li>
       <li><router-link to="contacto">Contacto</router-link></li>
     </ul>
     <!--componente home-->
