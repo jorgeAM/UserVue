@@ -10,6 +10,7 @@ import Home from './Home.vue'
 import User from './Usuario.vue'
 import UserList from './UserList.vue'
 import UsuarioAdd from './UsuarioAdd.vue'
+import UsuarioEdit from './UsuarioEdit.vue'
 import Contacto from './Contacto.vue'
 
 //para que use VueRouter
@@ -23,7 +24,7 @@ const routes = [
   { path: '/usuarios-lista', component: UserList },
   { path: '/usuario/:id', name: 'usuario', component: User },
   { path: '/crear-usuario', component: UsuarioAdd },
-  { path: '/editar-usuario/:id', name: 'editar-usuario', component: Home },
+  { path: '/editar-usuario/:id', name: 'editar-usuario', component: UsuarioEdit },
   { path: '/contacto', component: Contacto },
   { path: '/', component: Home }
 ]

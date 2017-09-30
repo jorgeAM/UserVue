@@ -31,7 +31,7 @@ export default {
     return {
     	id: null,
     	usuario: null,
-      msg: 'Detalle del Usuario'
+      msg: 'Detalle de Usuario'
     }
   },
   methods: {
