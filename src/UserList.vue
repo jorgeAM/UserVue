@@ -6,6 +6,7 @@
 				<p>
 					<router-link class="btn btn-success" :to="{name: 'usuario', params: { id: usuario.id }}">Ver</router-link>
 					<router-link class="btn btn-warning" :to="{name: 'editar-usuario', params: { id: usuario.id }}">Editar</router-link>
+					<a @click="borrarUsuario(usuario.id)" class="btn btn-danger">Borrar</a>
 				</p>
 			</li>
 		</ul>
@@ -34,8 +35,20 @@ import axios from 'axios';
 					this.usuarios = res.data.usuarios;
 				})
 				.catch(err => {
-					console.log(err)
+					console.log(err);
 				});
+			},
+			borrarUsuario(id){
+				let confirmation = confirm('Estas seguro?')
+				if(confirmation){
+					axios.delete('http://localhost:8000/api/usuarios/'+id)
+					.then(res => {
+						this.getUsuarios();
+					})
+					.catch(err => {
+						console.log(err);
+					})
+				}
 			}
 		}
 	}
